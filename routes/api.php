@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthApiController;
+use App\Http\Controllers\Api\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +24,9 @@ Route::middleware('api.token')->group(function () {
     
     // auth
     Route::post('login', [AuthApiController::class, 'login']);
+
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::get('posts', [PostController ::class, 'index']);
+        Route::get('/posts/reaction', [PostController::class, 'likeUnlike']);
+    });
 });

@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Faker\Factory as Faker;
 
 class UserSeeder extends Seeder
 {
@@ -26,5 +27,15 @@ class UserSeeder extends Seeder
             'email' => 'minpikehmu10@gmail.com',
             'password' => Hash::make('123456789'),
         ]);
+
+        $faker = Faker::create();
+
+        foreach (range(1, 15) as $index) {
+            User::create([
+                'name' => $faker->name,
+                'email' => $faker->unique()->safeEmail,
+                'password' => bcrypt('password'), // Use a default password
+            ]);
+        }
     }
 }
