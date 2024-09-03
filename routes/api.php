@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthApiController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\WifiCalculatorController;
+use App\Http\Controllers\Api\JobApplicationController;
+use App\Http\Controllers\Api\StaffController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,5 +37,7 @@ Route::middleware('api.token')->group(function () {
 
         Route::get('/ooredoo/invoice-amount', [WifiCalculatorController::class, 'calculateInvoiceAmount'])
             ->defaults('provider', 'ooredoo');
+
+        Route::post('/apply-job', [JobApplicationController::class, 'apply']);
     });
 });
