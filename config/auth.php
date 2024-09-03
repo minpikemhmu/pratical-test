@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'ctj-api' => [
+            'driver' => 'sanctum', // or 'passport' depending on your setup
+            'provider' => 'users',
+        ],
     ],
 
     /*
