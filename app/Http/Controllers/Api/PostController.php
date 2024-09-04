@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Response;
 use App\Traits\ResponserTraits;
 
-
 class PostController extends Controller
 {
     use ResponserTraits;

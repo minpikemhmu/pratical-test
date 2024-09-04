@@ -39,5 +39,6 @@ Route::middleware('api.token')->group(function () {
             ->defaults('provider', 'ooredoo');
 
         Route::post('/apply-job', [JobApplicationController::class, 'apply']);
+        Route::get('/staff/salary', [StaffController::class, 'salary']);
     });
 });

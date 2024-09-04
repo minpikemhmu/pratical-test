@@ -13,11 +13,20 @@ class ReactionSeeder extends Seeder
         $postIds = Post::pluck('id')->toArray();
         $userIds = User::pluck('id')->toArray();
 
-        foreach (range(3, 17) as $index) {
-            Reaction::create([
-                'post_id' => $postIds[array_rand($postIds)],
-                'user_id' => $userIds[array_rand($userIds)],
-            ]);
+        foreach (range(1, 15) as $index) {
+            $postId = $postIds[array_rand($postIds)];
+            $userId = $userIds[array_rand($userIds)];
+
+            $reactionExists = Reaction::where('post_id', $postId)
+                                      ->where('user_id', $userId)
+                                      ->exists();
+
+            if (!$reactionExists) {
+                Reaction::create([
+                    'post_id' => $postId,
+                    'user_id' => $userId,
+                ]);
+            }
         }
     }
 }

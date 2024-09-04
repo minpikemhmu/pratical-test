@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Reaction::class);
     }
+
+    public function staff()
+    {
+        return $this->hasOne(Staff::class);
+    }
 }

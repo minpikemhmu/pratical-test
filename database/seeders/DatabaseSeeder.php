@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             PostSeeder::class,
             ReactionSeeder::class,
+            JobSeeder::class,
+            StaffSeeder::class,
         ]);
     }
 }
